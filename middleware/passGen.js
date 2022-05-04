@@ -13,12 +13,10 @@ const passGen = {
 		const possible = this.filter(symbs, nums, upCase, lowCase);
 		const password = [];
 		for (var i = 0; i < len; i++) {
-			password.push(possible[Math.floor(Math.random() * (possible.length + 1))]);
+			password.push(possible[Math.floor(Math.random() * possible.length)]);
 		}
-		console.log(password);
+		return password.join('');
 	}
 }
-
-passGen.generate(100);
 
 module.exports = passGen;

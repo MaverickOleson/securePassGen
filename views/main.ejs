@@ -1,0 +1,31 @@
+<form action="/" method="post">
+	<input type="text" name="service" placeholder="Service" />
+	<input type="text" name="url" placeholder="Account URL" />
+	<label>Password Length</label>
+	<input type="number" name="passLen" />
+	<h1>Include:</h1>
+	<label>Symbols</label>
+	<input type="checkbox" name="symbols" />
+	<label>Numbers</label>
+	<input type="checkbox" name="numbers" />
+	<label>Upper Case</label>
+	<input type="checkbox" name="upperCase" />
+	<label>Lower Case</label>
+	<input type="checkbox" name="lowerCase" />
+	<button type="submit">Generate Password</button>
+</form>
+<div>
+	<% accounts.forEach(account=> { %>
+		<div>
+			<p>
+				<%= account.service %>
+			</p>
+			<p>
+				<%= account.url %>
+			</p>
+			<p>
+				<%= account.password %>
+			</p>
+		</div>
+		<% })%>
+</div>
