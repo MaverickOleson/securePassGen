@@ -9,14 +9,14 @@ app.set('view engine', 'ejs');
 
 app.post('/', (req, res) => {
 	if (!req.body || !req.body.service || !req.body.url || !req.body.passLen) return res.redirect('/');
-	console.log(req.body)
 	const data = {
 		service: req.body.service,
 		url: req.body.url,
-		password: passGen.generate(req.body.passLen, req.body.symbols, req.body.numbers, req.body.upperCase, req.body.lowerCase)
+		password: passGen.generate(req.body.passLen, req.body.symbols || false, req.body.numbers || false, req.body.upperCase || false, req.body.lowerCase || false)
 	}
-	console.log(data)
-	fs.writeFileSync('./accounts.json', JSON.parse(fs.readFileSync('./accounts.json')).push(data));
+	const accounts = JSON.parse(fs.readFileSync('./accounts.json'));
+	accounts.push(data)
+	fs.writeFileSync('./accounts.json', JSON.stringify(accounts));
 	res.redirect('/');
 })
 

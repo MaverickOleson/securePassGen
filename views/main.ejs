@@ -1,17 +1,17 @@
-<form action="/" method="post">
+<form name="form" action="/" method="post">
 	<input type="text" name="service" placeholder="Service" />
 	<input type="text" name="url" placeholder="Account URL" />
 	<label>Password Length</label>
 	<input type="number" name="passLen" />
 	<h1>Include:</h1>
 	<label>Symbols</label>
-	<input type="checkbox" name="symbols" />
+	<input type="checkbox" name="symbols" checked />
 	<label>Numbers</label>
-	<input type="checkbox" name="numbers" />
+	<input type="checkbox" name="numbers" checked />
 	<label>Upper Case</label>
-	<input type="checkbox" name="upperCase" />
+	<input type="checkbox" name="upperCase" checked />
 	<label>Lower Case</label>
-	<input type="checkbox" name="lowerCase" />
+	<input type="checkbox" name="lowerCase" checked />
 	<button type="submit">Generate Password</button>
 </form>
 <div>
@@ -29,3 +29,10 @@
 		</div>
 		<% })%>
 </div>
+<script>
+	document.form.onsubmit = function (e) {
+		if (!e.target.symbols.checked && !e.target.numbers.checked && !e.target.upperCase.checked && !e.target.lowerCase.checked) {
+			e.preventDefault();
+		}
+	}
+</script>
