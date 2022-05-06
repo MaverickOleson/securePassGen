@@ -24,10 +24,17 @@ app.post('/', (req, res) => {
 	res.redirect('/');
 })
 
+app.post('/delete', (req, res) => {
+	const accounts = JSON.parse(fs.readFileSync('./accounts.json'));
+	accounts.splice(req.body.index, 1);
+	fs.writeFileSync('./accounts.json', JSON.stringify(accounts));
+	res.redirect('/');
+})
+
 app.use('/', (req, res) => {
 	res.render('main', {
 		accounts: JSON.parse(fs.readFileSync('./accounts.json'))
 	});
 });
 
-app.listen(5000);
+app.listen(2000);

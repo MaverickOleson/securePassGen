@@ -3,28 +3,48 @@
 
 body {
     font-size: 1.5rem;
+    *{
+        font-family: monospace;
+    }
+    background: #151515;
+    color: white;
 }
 
 body>form {
-    background: lightBlue;
+    background: white;
 }
 
-body>form h1 {
-    color: cornflowerblue;
+body>form h2 {
+    text-decoration: underline;
+}
+
+form{
+    color: black;
+}
+
+input[type=checkbox]{
+    filter: grayscale(100%);
 }
 
 button[type=submit] {
-    background: cornflowerblue;
+    background: #444;
     color: white;
 }
 
 .grid {
-    background: lightBlue;
+    background: white;
+    grid-gap: 15px;
+    padding: 15 15px;
+    color: black;
 }
 
 .card {
     border: 5px solid white;
-    background: white;
+    background: #aaa;
+    padding: 15px;
+    p{
+        color: white;
+    }
 }
 
 /*# sourceMappingURL=main.css.map */
