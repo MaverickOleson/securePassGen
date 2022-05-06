@@ -1,38 +1,64 @@
-<form name="form" action="/" method="post">
-	<input type="text" name="service" placeholder="Service" />
-	<input type="text" name="url" placeholder="Account URL" />
-	<label>Password Length</label>
-	<input type="number" name="passLen" />
-	<h1>Include:</h1>
-	<label>Symbols</label>
-	<input type="checkbox" name="symbols" checked />
-	<label>Numbers</label>
-	<input type="checkbox" name="numbers" checked />
-	<label>Upper Case</label>
-	<input type="checkbox" name="upperCase" checked />
-	<label>Lower Case</label>
-	<input type="checkbox" name="lowerCase" checked />
-	<button type="submit">Generate Password</button>
-</form>
-<div>
-	<% accounts.forEach(account=> { %>
-		<div>
+<head>
+	<title>Your Passwords</title>
+	<link rel="stylesheet" href="/main.css" />
+</head>
+
+<body>
+	<form name="form" action="/" method="post">
+		<% if(locals.message){ %>
 			<p>
-				<%= account.service %>
+				<%= message %>
 			</p>
-			<p>
-				<%= account.url %>
-			</p>
-			<p>
-				<%= account.password %>
-			</p>
-		</div>
-		<% })%>
-</div>
-<script>
-	document.form.onsubmit = function (e) {
-		if (!e.target.symbols.checked && !e.target.numbers.checked && !e.target.upperCase.checked && !e.target.lowerCase.checked) {
-			e.preventDefault();
+			<% } %>
+				<input type="text" name="service" placeholder="Service" />
+				<input type="text" name="url" placeholder="Account URL" />
+				<label>Password Length</label>
+				<input type="number" name="passLen" />
+				<h1>Include:</h1>
+				<label>Symbols</label>
+				<input type="checkbox" name="symbols" checked />
+				<label>Numbers</label>
+				<input type="checkbox" name="numbers" checked />
+				<label>Upper Case</label>
+				<input type="checkbox" name="upperCase" checked />
+				<label>Lower Case</label>
+				<input type="checkbox" name="lowerCase" checked />
+				<button type="submit">Generate Password</button>
+	</form>
+	<div id="userGrid" class="grid">
+		<% if(locals.accounts){ accounts.forEach(account=> { %>
+			<div class='card'>
+				<h3>
+					Service:
+				</h3>
+				<p>
+					<%= account.service %>
+				</p>
+				<h3>
+					Account URL:
+				</h3>
+				<p>
+					<%= account.url %>
+				</p>
+				<h3>
+					Password:
+				</h3>
+				<p>
+					<%= account.password %>
+				</p>
+				<form action='/api/v1/userDelete/${name}' method='post'>
+					<button type='submit'>
+						<h2>X</h2>
+					</button>
+				</form>
+			</div>
+			<% })}%>
+	</div>
+	<script>
+		document.form.onsubmit = function (e) {
+			if (!e.target.symbols.checked && !e.target.numbers.checked && !e.target.upperCase.checked && !e.target.lowerCase.checked) {
+				e.preventDefault();
+			}
 		}
-	}
-</script>
+	</script>
+</body>

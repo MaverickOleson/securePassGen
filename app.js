@@ -3,12 +3,16 @@ const app = express();
 const passGen = require("./middleware/passGen");
 const fs = require('fs');
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/views/styles'));
 
 app.set('view engine', 'ejs');
 
 app.post('/', (req, res) => {
-	if (!req.body || !req.body.service || !req.body.url || !req.body.passLen) return res.redirect('/');
+	if (!req.body || !req.body.service || !req.body.url || !req.body.passLen) return res.render('main', {
+		message: 'Must fill out service, url, and password length fields.',
+		accounts: JSON.parse(fs.readFileSync('./accounts.json'))
+	});
 	const data = {
 		service: req.body.service,
 		url: req.body.url,

@@ -1,0 +1,30 @@
+@import './globals/index';
+@import './components/index';
+
+body {
+    font-size: 1.5rem;
+}
+
+body>form {
+    background: lightBlue;
+}
+
+body>form h1 {
+    color: cornflowerblue;
+}
+
+button[type=submit] {
+    background: cornflowerblue;
+    color: white;
+}
+
+.grid {
+    background: lightBlue;
+}
+
+.card {
+    border: 5px solid white;
+    background: white;
+}
+
+/*# sourceMappingURL=main.css.map */
