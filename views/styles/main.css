@@ -27,7 +27,7 @@ form {
   align-items: center;
   gap: 15px;
   text-align: center;
-  word-break: break-all;
+  word-break: break-word;
 }
 form label {
   font-weight: bold;
@@ -48,7 +48,7 @@ button {
   border: none;
   border-radius: 35px;
   cursor: pointer;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 input[type=checkbox] {
@@ -96,7 +96,7 @@ input[type=checkbox] {
   align-items: center;
   text-align: center;
   overflow: auto;
-  word-break: break-all;
+  word-break: break-word;
 }
 .grid .card::-webkit-scrollbar-track {
   background-color: #ccc;
@@ -143,6 +143,8 @@ body {
   font-size: 1.5rem;
   background: #151515;
   color: white;
+  word-break: break-word;
+  text-align: center;
 }
 body * {
   font-family: monospace;

@@ -27,7 +27,7 @@ form {
     align-items: center;
     gap: 15px;
     text-align: center;
-    word-break: break-all;
+    word-break: break-word;
 
     label {
         font-weight: bold;
@@ -51,10 +51,10 @@ button {
     border: none;
     border-radius: 35px;
     cursor: pointer;
-    word-break: break-all;
+    word-break: break-word;
 }
 
-input[type=checkbox]{
+input[type=checkbox] {
     cursor: pointer;
 }
 
